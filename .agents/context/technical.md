@@ -9,7 +9,8 @@ Evidence: user-approved technical brainstorming after the initial context bootst
 - React + TypeScript + Vite; user explicitly approved the proposed stack.
 - SVG floor plans, JSON application data, responsive CSS and Vitest for calculation tests.
 - Initial release: publicly viewable phone/desktop webapp, no accounts, database or application server required. Free hosting is a requirement, not a verified deployment.
-- Exact package versions, host, weather providers, mobile pan/zoom library and build/deployment configuration remain unselected.
+- Open-Meteo is selected as primary weather API; SunCalc is selected for local solar-position calculation. See the weather contract below.
+- Exact package versions, host, backup weather provider, mobile pan/zoom library and build/deployment configuration remain unselected.
 - Agent-assisted development is intended; user skill level is not a reason to avoid the selected stack. Maintainability still matters.
 
 ## Plans: photos to schematic SVG
@@ -38,7 +39,10 @@ Proposed separation of concerns: building/floor inventory, room characteristics,
 
 ## Approved weather behavior
 
-- One outdoor temperature is shared by the entire school, obtained through provider APIs. No per-room/building weather requests are needed.
+- Shared school-level inputs: outdoor temperature plus solar irradiance from Open-Meteo. Date/time and school coordinates drive local SunCalc solar azimuth/elevation calculations. No per-room/building weather requests are needed.
+- This supersedes the earlier temperature-only / solar-deferred scope. Solar inputs are now approved design inputs, not an implemented or validated model.
+- Open-Meteo fields: temperature_2m (Celsius), shortwave_radiation (W/m²); sunrise/sunset are available but do not replace solar-position calculations. Direct/diffuse radiation variables may support facade exposure; exact fields and projection method remain to choose.
+- Weather values are model-based estimates for the location, not on-site real-time sensor observations. Radiation interval/reference timestamps matter; do not assume instantaneous irradiance or fresh observations on every client refresh.
 - Use a primary provider, falling back to a secondary if the primary fails. The user accepted the discussed failure behavior: request failure, timeout or invalid data triggers fallback.
 - If both fail, retain the last known temperature and visibly show its age.
 - If no previous value exists, explicitly mark the weather-dependent indicator unavailable; never invent a temperature.
@@ -46,9 +50,13 @@ Proposed separation of concerns: building/floor inventory, room characteristics,
 
 Recommended adapter output: temperature, reference timestamp and provider. Distinguish observation/reference time from retrieval time when selecting APIs. Both providers should offer comparable data for the school's location.
 
-Still open: provider selection, coordinates, refresh cadence, timeout/retry policy, validation/freshness limits, cache persistence and expiry, and treatment of recommendations when weather is unavailable or old. Do not assume an indefinitely usable stale value or infer a silent default.
+Still open: backup provider, coordinates, refresh cadence, timeout/retry policy, validation/freshness limits, cache persistence and expiry, and treatment of recommendations when weather is unavailable or old. Do not assume an indefinitely usable stale value or infer a silent default.
 
-Before selection, verify free-tier conditions, browser CORS support and credentials: a static client must not expose provider secrets. If a provider requires a secret, revisit the provider or architecture rather than adding an unapproved server implicitly.
+The backup must be assessed for both temperature and radiation. Temperature-only degraded operation was suggested, not separately approved; do not silently fabricate radiation or claim full equivalence between providers.
+
+Reference documentation: [Open-Meteo API](https://open-meteo.com/en/docs), [usage terms](https://open-meteo.com/en/terms). Free no-key access is subject to non-commercial terms, quotas and attribution; confirm institutional eligibility before deployment. Exact quota/cadence is not frozen in this context.
+
+Before integration, verify free-tier conditions, browser CORS support and credentials: a static client must not expose provider secrets. If a provider requires a secret, revisit the provider or architecture rather than adding an unapproved server implicitly.
 
 ## Implementation tests to design, not existing coverage
 

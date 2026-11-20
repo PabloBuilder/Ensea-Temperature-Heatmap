@@ -1,0 +1,21 @@
+{
+  "buildings": [
+    { "id": "A", "levels": [1, 2, 3, 4] },
+    { "id": "B", "levels": [1, 2, 3, 4] },
+    { "id": "D", "levels": [1, 2, 3, 4] }
+  ],
+  "floor": { "buildingId": "A", "level": 1 },
+  "scenario": "cooling",
+  "rooms": [
+    { "id": "A101", "band": "very-cool", "cooling": false, "heating": true },
+    { "id": "A102", "band": "cool", "cooling": true, "heating": true },
+    { "id": "A103", "band": "neutral", "cooling": false, "heating": true },
+    { "id": "A104", "band": "warm", "cooling": false, "heating": true },
+    { "id": "A105", "band": "very-warm", "cooling": false, "heating": true },
+    { "id": "A106", "band": "cool", "cooling": false, "heating": true },
+    { "id": "A107", "band": "neutral", "cooling": false, "heating": true },
+    { "id": "A108", "band": "warm", "cooling": true, "heating": true },
+    { "id": "A109", "band": "very-warm", "cooling": false, "heating": true },
+    { "id": "A110", "band": "warm", "cooling": false, "heating": true }
+  ]
+}

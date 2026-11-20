@@ -13,7 +13,7 @@ Requirements/design discovery. React + TypeScript + Vite and supporting technolo
 | formule, indice, classement, température extérieure, climatisation, chauffage | [Thermal indicator](indicator.md) | Discuss calculation, scientific limits or equipment rules |
 | données, patrimoine, isolation, construction, capteur, tests | [Data and validation](data-validation.md) | Prepare collection, resolve missing evidence or design experiments |
 | heatmap, couleurs, bâtiment, étage, téléphone, meilleurs endroits, compte | [Webapp and delivery](webapp.md) | Design navigation, recommendations or personalization |
-| code, React, TypeScript, Vite, SVG, CSV, JSON, API météo, fallback, hébergement | [Technical architecture](technical.md) | Select implementation boundaries, prepare assets/data or implement weather resilience |
+| code, React, TypeScript, Vite, SVG, CSV, JSON, API météo, Open-Meteo, SunCalc, soleil, fallback, hébergement | [Technical architecture](technical.md) | Select implementation boundaries, prepare assets/data or implement weather resilience |
 
 ## Existing evidence / assets
 
@@ -21,7 +21,7 @@ Requirements/design discovery. React + TypeScript + Vite and supporting technolo
 - [Original temperature formula](../../formule%20de%20la%20température%20intérieur.md): initial formula sketch, not a validated or finalized specification.
 - [School plans PDF](../../Plans%20ENSEA.pdf) and [building D floor image](../../Batiment%20D-%203%20éme%20etage%20.png): existing assets; contents, coverage, geometry and reuse suitability not inspected during bootstrap.
 
-Later user decisions refine the original documents: year-round ranking rather than exact temperatures; current outdoor temperature only for initial weather input; equipment priority rather than equipment simulation; accounts deferred. Do not silently restore superseded historical assumptions.
+Later user decisions refine the original documents: year-round ranking rather than exact temperatures; Open-Meteo temperature/irradiance plus SunCalc solar position (superseding temperature-only scope); equipment priority rather than equipment simulation; accounts deferred. Do not silently restore superseded historical assumptions.
 
 ## Navigation boundaries
 

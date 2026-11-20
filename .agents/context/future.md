@@ -4,15 +4,11 @@ Purpose / keywords: voies futures, évolution, roadmap, personnalisation, compte
 
 Evidence: user decisions in project and technical brainstorming. These are deferred directions, not implemented features, scheduled milestones or approval to implement them now. No delivery order or dates are agreed.
 
+## Promoted into current design scope
+
+Actual solar conditions are no longer deferred: the user approved Open-Meteo for temperature/irradiance and SunCalc for date/time-based solar position. Implementation, facade projection, coefficients and validation remain pending. See [indicator](indicator.md) and [technical context](technical.md); this promotion does not imply working code.
+
 ## Confirmed deferred directions
-
-### Actual solar conditions
-
-- Extend the initial current-outdoor-temperature input with actual weather irradiance/solar conditions.
-- Goal: distinguish sunny and cloudy conditions and refine exposure effects across rooms.
-- Boundary: static window orientation, glazing and protections may already inform the initial indicator; actual solar weather is deferred.
-- Before implementation: select data/provider, define how weather relates to each facade and protections, justify coefficients, and test improvement in room ranking. Do not equate horizontal irradiance directly with that received by every window.
-- Current contract: [indicator](indicator.md); provider architecture: [technical context](technical.md).
 
 ### Recent weather history and thermal accumulation
 

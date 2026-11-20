@@ -14,7 +14,7 @@ Purpose / keywords: idée globale, école, confort thermique, réorganisation, d
 
 ## Initial release boundaries
 
-- Static room characteristics plus current outdoor weather temperature drive the indicator.
+- Static room characteristics plus shared outdoor temperature, solar irradiance and date/time-based solar position drive the planned indicator. Open-Meteo + SunCalc are selected; calculation details remain to define.
 - Colors convey thermal hierarchy, not estimated/measured indoor temperatures in degrees Celsius.
 - Two equipment views and two navigation journeys: see [indicator](indicator.md) and [webapp](webapp.md).
 - No indoor sensor feed, real-time occupancy tracking, reservation system or physical access control.
@@ -22,7 +22,7 @@ Purpose / keywords: idée globale, école, confort thermique, réorganisation, d
 
 ## Deferred evolution
 
-Actual solar inputs, recent weather history/accumulation and optional profile-based personalization are explicitly deferred. Whole-school coverage grows with available data. See [future directions](future.md) for goals, prerequisites, boundaries and unapproved possibilities; no schedule or implementation order is agreed.
+Recent weather history/accumulation and optional profile-based personalization remain deferred. Actual solar inputs were subsequently promoted into the approved design scope. Whole-school coverage grows with available data. See [future directions](future.md) for goals, prerequisites, boundaries and unapproved possibilities; no schedule or implementation order is agreed.
 
 ## Quality and open work
 

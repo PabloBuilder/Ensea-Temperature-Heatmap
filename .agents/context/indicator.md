@@ -5,10 +5,11 @@ Purpose / keywords: formule custom, hiérarchie, météo, température extérieu
 ## Confirmed requirements
 
 - Rank rooms thermally, not predict or display indoor temperatures in degrees Celsius.
-- Initial inputs: fixed room characteristics and one current outdoor weather temperature shared across the entire school. No live indoor measurements or occupancy inputs. Primary/backup API and last-known-value behavior: [technical weather contract](technical.md#approved-weather-behavior).
+- Approved inputs: fixed room characteristics, shared outdoor temperature and solar irradiance, plus solar position calculated from date/time and school coordinates. Open-Meteo + SunCalc are selected. No live indoor measurements or occupancy inputs. Primary/backup API and last-known-value behavior: [technical weather contract](technical.md#approved-weather-behavior).
 - The indicator must work year-round; no separate user-facing winter/summer comfort profile is required.
 - A room's color may change with outdoor weather even when its ranking stays the same.
-- Recent temperature history/inertia modeling and actual weather irradiance are deferred. Static orientation, glazing and protections remain candidate room characteristics; they are not live solar measurements.
+- Recent temperature history/inertia modeling remains deferred. Solar weather is now in scope, superseding the earlier deferral. Static facade/window orientation, glazing and protections connect room characteristics to solar exposure; exact coefficients and methods remain open.
+- Solar azimuth/elevation, not merely daylight hours, determine potential facade exposure. Horizontal irradiance cannot be applied unchanged to every window; UV index is not a substitute for solar irradiance.
 
 ## Two views of the same underlying method
 
